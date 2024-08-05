@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
+import { VerticalGraph } from "./VerticalGraph";
+
 const Positions = () => {
   let [allPositions, SetAllPositions] = useState([]);
 
@@ -9,6 +11,19 @@ const Positions = () => {
       SetAllPositions(res.data);
     });
   }, []);
+
+  const labels = allPositions.map((subArray) => subArray["name"]);
+
+  const data = {
+    labels,
+    datasets: [
+      {
+        label: "Stock Price",
+        data: allPositions.map((stock) => stock.price),
+        backgroundColor: "rgba(255, 99, 132, 0.5)",
+      },
+    ],
+  };
 
   return (
     <>
@@ -45,6 +60,7 @@ const Positions = () => {
             );
           })}
         </table>
+        <VerticalGraph data={data} />
       </div>
     </>
   );
