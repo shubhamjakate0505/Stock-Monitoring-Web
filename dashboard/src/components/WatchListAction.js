@@ -1,12 +1,20 @@
 import { BarChartOutlined, MoreHoriz } from "@mui/icons-material";
 import { Grow, Tooltip } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
+
+import GeneralContext from "./GeneralContext";
 
 function WatchListAction({ uid }) {
+  const generalContext = useContext(GeneralContext);
+
+  const handleBuyClick = () => {
+    generalContext.openBuyWindow(uid);
+  };
+
   return (
     <span className="actions">
       <span>
-        <Tooltip title="Buy (B)" placement="top" arrow TransitionComponent={Grow}>
+        <Tooltip title="Buy (B)" placement="top" arrow TransitionComponent={Grow} onClick={handleBuyClick}>
           <button className="buy">Buy</button>
         </Tooltip>
       </span>
