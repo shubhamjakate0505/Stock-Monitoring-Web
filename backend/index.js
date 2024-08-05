@@ -8,35 +8,18 @@ const bodyParser = require("body-parser");
 const port = process.env.PORT || 3002;
 const url = process.env.MONGO_URL;
 
-const { HoldingsModel } = require("./model/HoldingsModel");
-const { PositionsModel } = require("./model/PositionsModel");
-const { OrdersModel } = require("./model/OrdersModel");
+const holdingsRoute = require("./routes/holdingsRoute");
+const positionsRoute = require("./routes/positionsRoute");
+const userRoute = require("./routes/userRoute");
+const orderRoute = require("./routes/orderRoute");
 
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get("/allHoldings", async (req, res) => {
-  let allHoldings = await HoldingsModel.find({});
-  res.json(allHoldings);
-});
-
-app.get("/allPositions", async (req, res) => {
-  let allPositions = await PositionsModel.find({});
-  res.json(allPositions);
-});
-
-app.post("/newOrder", async (req, res) => {
-  let newOrder = new OrdersModel({
-    name: req.body.name,
-    qty: req.body.qty,
-    price: req.body.price,
-    mode: req.body.mode,
-  });
-
-  newOrder.save();
-
-  res.send("Order saved!");
-});
+app.use("/holdings", holdingsRoute);
+app.use("/positions", positionsRoute);
+app.use("/user", userRoute);
+app.use("/order", orderRoute);
 
 app.listen(port, async () => {
   console.log(`App Is listening On ${port}`);
