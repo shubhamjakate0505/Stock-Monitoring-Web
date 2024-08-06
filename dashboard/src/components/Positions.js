@@ -2,14 +2,22 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 import { VerticalGraph } from "./VerticalGraph";
+import { useAuth } from "../hooks/useAuth";
 
 const Positions = () => {
   let [allPositions, SetAllPositions] = useState([]);
+  let { user } = useAuth();
 
   useEffect(() => {
-    axios.get("http://localhost:3002/allPositions").then((res) => {
-      SetAllPositions(res.data);
-    });
+    axios
+      .get("http://localhost:3002/positions/index", {
+        headers: {
+          Authorization: user,
+        },
+      })
+      .then((res) => {
+        SetAllPositions(res.data);
+      });
   }, []);
 
   const labels = allPositions.map((subArray) => subArray["name"]);

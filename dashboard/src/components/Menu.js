@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
 
 const Menu = () => {
   const [selectedMenu, SetSelectedMenu] = useState(0);
@@ -15,6 +16,8 @@ const Menu = () => {
 
   const menuClass = "menu";
   const activeMenuClass = "menu selected";
+
+  const { logout } = useAuth();
 
   return (
     <div className="menu-container">
@@ -58,6 +61,13 @@ const Menu = () => {
           <p className="username">USERID</p>
         </div>
       </div>
+      {isProfileDropdownOpen ? (
+        <div>
+          <ul>
+            <li onClick={logout()}>Log Out</li>
+          </ul>
+        </div>
+      ) : null}
     </div>
   );
 };

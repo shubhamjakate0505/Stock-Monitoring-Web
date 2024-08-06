@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 app.use("/holdings", holdingsRoute);
 app.use("/positions", positionsRoute);
 app.use("/user", userRoute);
-app.use("/order", orderRoute);
+app.use("/orders", orderRoute);
 
 app.listen(port, async () => {
   console.log(`App Is listening On ${port}`);

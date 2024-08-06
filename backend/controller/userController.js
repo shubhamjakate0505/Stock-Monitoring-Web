@@ -6,6 +6,7 @@ const { UserModel } = require("../model/UserModel");
 
 module.exports.register = async (req, res) => {
   try {
+    console.log(req.body);
     const existingUser = await UserModel.findOne({ email: req.body.email });
     if (existingUser) {
       return res.status(400).json({ error: "Email already exists" });
@@ -18,9 +19,10 @@ module.exports.register = async (req, res) => {
       email: req.body.email,
       password: hashedPassword,
     });
-
     await newUser.save();
-    res.status(201).json({ message: "User registered successfully" });
+
+    const token = jwt.sign({ email: newUser.email }, process.env.secret);
+    res.status(200).json({ token });
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }
