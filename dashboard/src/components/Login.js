@@ -1,10 +1,10 @@
 import * as React from "react";
 import axios from "axios";
+import { useNavigate, Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
@@ -19,8 +19,15 @@ const defaultTheme = createTheme();
 
 export default function Login() {
   let [alert, setAlert] = React.useState({ st: false, msg: "" });
+  const navigate = useNavigate();
+  const { login, user } = useAuth();
 
-  const { login } = useAuth();
+  React.useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, []);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
@@ -29,7 +36,7 @@ export default function Login() {
       password: formData.get("password"),
     };
     axios
-      .post("http://localhost:3002/user/login", data, {
+      .post("https://zerodha-clone-backend-8nlf.onrender.com/user/login", data, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -75,9 +82,7 @@ export default function Login() {
             </Button>
             <Grid container>
               <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
+                <Link to="/register">{"Don't have an account? Sign Up"}</Link>
               </Grid>
             </Grid>
           </Box>

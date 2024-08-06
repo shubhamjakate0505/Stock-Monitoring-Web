@@ -1,9 +1,9 @@
 import * as React from "react";
+import { useNavigate, Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
@@ -16,25 +16,19 @@ import axios from "axios";
 
 import { useAuth } from "../hooks/useAuth";
 
-function Copyright(props) {
-  return (
-    <Typography variant="body2" align="center" {...props}>
-      {"Made with "}
-      <FavoriteIcon />
-      {"By "}
-      <Link color="inherit" href="https://github.com/jenil-desai">
-        Jenil Desai
-      </Link>{" "}
-    </Typography>
-  );
-}
-
 const defaultTheme = createTheme();
 
 export default function Register() {
   let [alert, setAlert] = React.useState({ st: false, msg: "" });
+  const navigate = useNavigate();
+  const { login, user } = useAuth();
 
-  const { login } = useAuth();
+  React.useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, []);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
@@ -45,8 +39,12 @@ export default function Register() {
       password: formData.get("password"),
     };
 
+    if (data.username || data.email || data.password) {
+      setAlert({ st: true, msg: "Enter Valid Details" });
+    }
+
     axios
-      .post("http://localhost:3002/user/register", data, {
+      .post("https://zerodha-clone-backend-8nlf.onrender.com/user/register", data, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -84,6 +82,7 @@ export default function Register() {
             Register Now
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+            {alert.st == true ? <Alert severity="error">{alert.msg}</Alert> : null}
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField autoComplete="given-name" name="Username" required fullWidth id="Username" label="Username" autoFocus />
@@ -100,14 +99,13 @@ export default function Register() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link to="/login" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
   );
