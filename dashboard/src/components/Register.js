@@ -39,7 +39,7 @@ export default function Register() {
       password: formData.get("password"),
     };
 
-    if (data.username || data.email || data.password) {
+    if (!data.username || !data.email || !data.password) {
       setAlert({ st: true, msg: "Enter Valid Details" });
     }
 
