@@ -1,117 +1,148 @@
-# Zerodha Clone
+# 🌐 Zerodha Clone
 
-This is a clone of the popular stock trading platform Zerodha built using the MERN stack. The project replicates key features including real-time stock updates, user authentication, and portfolio management.
+Welcome to **Zerodha Clone**! This repository includes a clone of the popular stock trading platform, built using the MERN stack.
 
-## Features
+---
 
-- **Full Frontend Clone:** The project includes a complete frontend clone of Zerodha.
-- **Dashboard:** The dashboard displays holdings and positions data.
-- **User Authentication:** Users can register and log in securely.
-- **Orders Page:** Shows stock transactions for the logged-in user.
-- **Real-time Updates:** Real-time stock updates for an immersive experience.
+## 📑 Table of Contents
 
-## Technologies Used
+1. [Overview](#-overview)
+2. [Technologies](#-technologies)
+3. [Packages & Libraries Used](#-packages--libraries-used)
+4. [Getting Started](#-getting-started)
+5. [Setup](#-setup)
+6. [Features](#-features)
+7. [Demo & Screenshots](#-demo--screenshots)
+8. [Acknowledgments](#-acknowledgments)
+9. [License](#-license)
 
-### Frontend
+---
 
-- **React:** For building the user interface.
-- **Bootstrap:** For responsive and stylish design.
-- **React Router DOM:** For client-side routing.
-- **Material UI:** For advanced UI components in the dashboard.
-- **Charts.js:** For data visualization in the dashboard.
-- **Axios:** For making HTTP requests to the backend.
+## 🌟 Overview
 
-### Backend
+**Description**: A clone of the popular stock trading platform, Zerodha, built using the MERN stack.
 
-- **Node.js:** For server-side JavaScript.
-- **Express.js:** For building the RESTful API.
-- **MongoDB:** As the database.
-- **Mongoose:** For object data modeling (ODM) with MongoDB.
-- **Bcrypt:** For hashing passwords.
-- **JWT:** For secure user authentication.
+---
 
-## Screenshots
+## 💻 Technologies
 
-![Mockup](./Screenshot/mockup.png)
-_Mockup_
+Below is a breakdown of the core technologies used in this project.
 
-![Dashboard](./Screenshot/Dashboard.jpeg)
-_Dashboard_
+| 🌐 Web       |
+| ------------ |
+| **React.js** |
+| **Node.js**  |
+| **MongoDB**  |
 
-![Home Page](./Screenshot/Homepage.jpeg)
-_Home Page_
+---
 
-## Installation
+## 📦 Packages / Libraries Used
 
-1. **Clone the repository:**
+This project uses the following essential libraries and packages:
+
+| Package / Library  | Purpose                       |
+| ------------------ | ----------------------------- |
+| `Bootstrap 5.3`    | Responsive design             |
+| `Material UI`      | UI Components                 |
+| `Express.js`       | Backend framework             |
+| `Mongoose`         | MongoDB object modeling       |
+| `Bcrypt`           | Password hashing              |
+| `Jwt`              | JSON Web Token                |
+| `Charts.js`        | Data visualization            |
+| `Axios`            | HTTP client                   |
+| `React Router Dom` | Client-side routing           |
+| `Passport`         | Authentication                |
+| `cors`             | Cross-origin resource sharing |
+| `Body-Parser`      | Body parsing middleware       |
+
+---
+
+## 🚀 Getting Started
+
+Follow these steps to set up the project in your local environment:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Jenil-Desai/zerodha-clone.git
+   ```
+2. Install dependencies for Backend, Frontend, and Dashboard.
 
    ```bash
-   git clone https://github.com/yourusername/zerodha-clone.git
-   cd zerodha-clone
+   cd backend
+   npm install
    ```
 
-2. **Install dependencies:**
+   ```bash
+   cd ../dashboard
+   npm install
+   ```
 
-   - Install backend dependencies:
+   ```bash
+   cd ../frontend
+   npm install
+   ```
 
-     ```bash
-     cd backend
-     npm install
-     ```
-
-   - Install frontend dependencies:
-     ```bash
-     cd ../frontend
-     npm install
-     ```
-
-3. **Configure environment variables:**
-
-   Create a `.env` file in the `backend` directory and add your MongoDB connection string, JWT secret, and other necessary environment variables.
-
+3. Configure environment variables for the backend. Create `.env` in the `backend` folder with following :
    ```env
-   PORT=3002
-   MONGO_URL=your_mongodb_connection_string
-   SECRET=your_jwt_secret
+   PORT=3000
+   MONGO_URL="Your Mongo Database Url"
+   secret="Your Unique JWT Secret"
+   ```
+4. Run the web application:
+   ```bash
+   npm start
    ```
 
-4. **Run the application:**
+---
 
-   - Start the backend server:
+## ⚙️ Setup
 
-     ```bash
-     cd backend
-     npm start
-     ```
+1. Go to `localhost:3000`.
+2. Register a new user.
+3. Explore the dashboard.
 
-   - Start the frontend development server:
-     ```bash
-     cd ../frontend
-     npm start
-     ```
+---
 
-## Usage
+## 🎯 Features
 
-1. Open your browser and navigate to `http://localhost:3000` to see the frontend.
-2. Register a new user or log in with existing credentials.
-3. Explore the dashboard to view holdings and positions data.
-4. Check the orders page to see stock transactions of the logged-in user.
+Explore the unique features available in this application:
 
-## Live Demo
+- **User Authentication**
+- **User Authorization**
+- **Orders Page**
+- **Dashboard**
+- **Frontend Clone**
 
-Check out the live demo of the project [here](https://zerodha-clone-frontend.vercel.app).
+---
 
-1. Username : Demo
-2. Password : Demo
+## 🔗 Demo & Screenshots
 
-## Version Releases
+- [Demo](https://zerodha-clone-frontend.vercel.app)
+- UserName : Demo
+- Password : Demo
 
-Track the version releases and updates on our Notion page [here](https://jenil-desai.notion.site/Version-Releases-Zerodha-Clone-5bdae32caa7947b8b4e2fb0cb50fb50e?pvs=4).
+| Mock Up                            | Home Page                             | Dashboard                              | About Page                         |
+| ---------------------------------- | ------------------------------------- | -------------------------------------- | ---------------------------------- |
+| ![Mockup](./Screenshot/mockup.png) | ![Mockup](./Screenshot/Homepage.jpeg) | ![Mockup](./Screenshot/Dashboard.jpeg) | ![Mockup](./Screenshot/About.jpeg) |
 
-## Contributing
+| Products Page                        | Pricing Page                         | Support Page                         |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| ![Mockup](./Screenshot/Product.jpeg) | ![Mockup](./Screenshot/Pricing.jpeg) | ![Mockup](./Screenshot/Support.jpeg) |
 
-Feel free to submit issues or pull requests. Contributions are welcome!
+---
 
-## License
+## 🙏 Acknowledgments
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+We’d like to thank the following contributors and resources:
+
+- **[Apna College's Delta 3.0 Course](https://www.apnacollege.in/)** - Course resource.
+
+---
+
+## 📜 License
+
+This project is licensed under the [MIT License](LICENSE). See the [LICENSE](LICENSE) file for details.
+
+---
+
+### Enjoy exploring and contributing to Zerodha Clone!
