@@ -9,8 +9,8 @@ function Team() {
       </div>
       <div className="row p-5 text-muted" style={{ fontSize: "1.2em" }}>
         <div className="col-6 p-5 text-center">
-          <img src="media/images/nithinKamath.jpg" className="rounded-circle" style={{ width: "50%" }} />
-          <h4 className="mt-5">Nithin Kamath</h4>
+          <img src="media/images/dqPmA01d_400x400.jpg" className="rounded-circle" style={{ width: "50%" }} />
+          <h4 className="mt-5">Shubham Jakate</h4>
           <h6>Founder, CEO</h6>
         </div>
         <div className="col-6 p-5" style={{ fontSize: "1em" }}>
